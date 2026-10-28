@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="NpcData" format=3]
 
 [ext_resource type="Script" path="res://scripts/data/npc_data.gd" id="1"]
-[ext_resource type="Texture2D" path="res://assets/art/boss_hozyaika.svg" id="2"]
+[ext_resource type="Texture2D" path="res://assets/art/gen/hozyaika_idle.png" id="2"]
 [ext_resource type="Script" path="res://scripts/data/action_data.gd" id="3"]
 
 [sub_resource type="Resource" id="Resource_atk1"]
@@ -55,9 +55,9 @@ id = &"hozyaika"
 name = "NPC_HOZYAIKA"
 texture = ExtResource("2")
 color = Color(1.0, 0.1216, 0.2392, 1.0)
-sprite_scale = 0.78
+sprite_scale = 0.6947
 float_amount = 6.0
 boss = true
-eyes = PackedVector2Array(0.4733, 0.21, 0.5267, 0.21)
-eye_size = 0.012
+eyes = PackedVector2Array(0.507, 0.214, 0.576, 0.213)
+eye_size = 0.014
 actions = Array[ExtResource("3")]([SubResource("Resource_atk1"), SubResource("Resource_atk2"), SubResource("Resource_atk3"), SubResource("Resource_atk4"), SubResource("Resource_atk5")])

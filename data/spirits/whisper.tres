@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/data/item_data.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/data/action_data.gd" id="2"]
-[ext_resource type="Texture2D" path="res://assets/art/enemy_sheptuha.svg" id="3"]
+[ext_resource type="Texture2D" path="res://assets/art/gen/sheptuha_jar.png" id="3"]
 
 [sub_resource type="Resource" id="Resource_act1"]
 script = ExtResource("2")

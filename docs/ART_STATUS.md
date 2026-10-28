@@ -1,6 +1,6 @@
 # Статус арта — генерируется `tools/import_art.py`, руками не править
 
-Обновлено: 2026-10-05 18:28. Подключено **0 из 78**.
+Обновлено: 2026-10-28 20:46. Подключено **11 из 78**.
 
 Как добавить картинку: положи её в `art_src/<папка>/<id>.png` (имена — в таблицах ниже, промты — `docs/ART_PROMPTS.md`) и запусти `python3 tools/import_art.py`. Можно слать мне партиями — импорт сделаю сам.
 
@@ -11,37 +11,37 @@
 
 | Файл | Статус | Итог | Где в игре | Замечания |
 |---|---|---|---|---|
-| `art_src/enemies/moshkara_idle.png` | ⏳ заглушка `enemy_moshkara.svg` | — | Мошкара — бой: обычный вид, бестиарий в меню |  |
+| `art_src/enemies/moshkara_idle.png` | ✅ | 421×600 | Мошкара — бой: обычный вид, бестиарий в меню | хромакей #FF00FF |
 | `art_src/enemies/moshkara_attack.png` | ➕ | — | Мошкара — бой: замах/атака (этап 3.2) |  |
 | `art_src/enemies/moshkara_hurt.png` | ➕ | — | Мошкара — бой: получил удар (этап 3.2) |  |
 | `art_src/enemies/moshkara_weak.png` | ➕ | — | Мошкара — бой: ≤30% жизни, можно Печать (этап 3.2) |  |
-| `art_src/enemies/moshkara_jar.png` | ⏳ заглушка `enemy_moshkara.svg` | — | Мошкара — дух в склянке: иконка духа (data/spirits), карточка Печати |  |
-| `art_src/enemies/svecheed_idle.png` | ⏳ заглушка `enemy_svecheed.svg` | — | Свечеед — бой: обычный вид, бестиарий в меню |  |
+| `art_src/enemies/moshkara_jar.png` | ✅ | 256×256 | Мошкара — дух в склянке: иконка духа (data/spirits), карточка Печати | хромакей #FF00FF |
+| `art_src/enemies/svecheed_idle.png` | ✅ | 314×600 | Свечеед — бой: обычный вид, бестиарий в меню | хромакей #00FF00 |
 | `art_src/enemies/svecheed_attack.png` | ➕ | — | Свечеед — бой: замах/атака (этап 3.2) |  |
 | `art_src/enemies/svecheed_hurt.png` | ➕ | — | Свечеед — бой: получил удар (этап 3.2) |  |
 | `art_src/enemies/svecheed_weak.png` | ➕ | — | Свечеед — бой: ≤30% жизни, можно Печать (этап 3.2) |  |
-| `art_src/enemies/svecheed_jar.png` | ⏳ заглушка `enemy_svecheed.svg` | — | Свечеед — дух в склянке: иконка духа (data/spirits), карточка Печати |  |
-| `art_src/enemies/sheptuha_idle.png` | ⏳ заглушка `enemy_sheptuha.svg` | — | Шептуха — бой: обычный вид, бестиарий в меню |  |
+| `art_src/enemies/svecheed_jar.png` | ✅ | 256×256 | Свечеед — дух в склянке: иконка духа (data/spirits), карточка Печати | хромакей #00FF00 |
+| `art_src/enemies/sheptuha_idle.png` | ✅ | 333×600 | Шептуха — бой: обычный вид, бестиарий в меню | хромакей #00FF00 |
 | `art_src/enemies/sheptuha_attack.png` | ➕ | — | Шептуха — бой: замах/атака (этап 3.2) |  |
 | `art_src/enemies/sheptuha_hurt.png` | ➕ | — | Шептуха — бой: получил удар (этап 3.2) |  |
 | `art_src/enemies/sheptuha_weak.png` | ➕ | — | Шептуха — бой: ≤30% жизни, можно Печать (этап 3.2) |  |
-| `art_src/enemies/sheptuha_jar.png` | ⏳ заглушка `enemy_sheptuha.svg` | — | Шептуха — дух в склянке: иконка духа (data/spirits), карточка Печати |  |
-| `art_src/enemies/motanka_idle.png` | ⏳ заглушка `enemy_motanka.svg` | — | Мотанка — бой: обычный вид, бестиарий в меню |  |
+| `art_src/enemies/sheptuha_jar.png` | ✅ | 256×256 | Шептуха — дух в склянке: иконка духа (data/spirits), карточка Печати | хромакей #00FF00 |
+| `art_src/enemies/motanka_idle.png` | ✅ | 406×600 | Мотанка — бой: обычный вид, бестиарий в меню | хромакей #00FF00 |
 | `art_src/enemies/motanka_attack.png` | ➕ | — | Мотанка — бой: замах/атака (этап 3.2) |  |
 | `art_src/enemies/motanka_hurt.png` | ➕ | — | Мотанка — бой: получил удар (этап 3.2) |  |
 | `art_src/enemies/motanka_weak.png` | ➕ | — | Мотанка — бой: ≤30% жизни, можно Печать (этап 3.2) |  |
-| `art_src/enemies/motanka_jar.png` | ⏳ заглушка `enemy_motanka.svg` | — | Мотанка — дух в склянке: иконка духа (data/spirits), карточка Печати |  |
-| `art_src/enemies/podpolnik_idle.png` | ⏳ заглушка `enemy_podpolnik.svg` | — | Подпольник — бой: обычный вид, бестиарий в меню |  |
+| `art_src/enemies/motanka_jar.png` | ✅ | 256×256 | Мотанка — дух в склянке: иконка духа (data/spirits), карточка Печати | хромакей #00FF00 |
+| `art_src/enemies/podpolnik_idle.png` | ✅ | 596×600 | Подпольник — бой: обычный вид, бестиарий в меню | хромакей #FF00FF |
 | `art_src/enemies/podpolnik_attack.png` | ➕ | — | Подпольник — бой: замах/атака (этап 3.2) |  |
 | `art_src/enemies/podpolnik_hurt.png` | ➕ | — | Подпольник — бой: получил удар (этап 3.2) |  |
 | `art_src/enemies/podpolnik_weak.png` | ➕ | — | Подпольник — бой: ≤30% жизни, можно Печать (этап 3.2) |  |
-| `art_src/enemies/podpolnik_jar.png` | ⏳ заглушка `enemy_podpolnik.svg` | — | Подпольник — дух в склянке: иконка духа (data/spirits), карточка Печати |  |
+| `art_src/enemies/podpolnik_jar.png` | ✅ | 256×256 | Подпольник — дух в склянке: иконка духа (data/spirits), карточка Печати | хромакей #FF00FF |
 
 ## Босс
 
 | Файл | Статус | Итог | Где в игре | Замечания |
 |---|---|---|---|---|
-| `art_src/enemies/hozyaika_idle.png` | ⏳ заглушка `boss_hozyaika.svg` | — | Хозяйка — бой: обычный вид (data/npcs/hozyaika.tres) |  |
+| `art_src/enemies/hozyaika_idle.png` | ✅ | 434×640 | Хозяйка — бой: обычный вид (data/npcs/hozyaika.tres) | хромакей #00FF00 |
 | `art_src/enemies/hozyaika_attack.png` | ➕ | — | Хозяйка — бой: атака (этап 3.2) |  |
 | `art_src/enemies/hozyaika_hurt.png` | ➕ | — | Хозяйка — бой: удар (этап 3.2) |  |
 | `art_src/enemies/hozyaika_enraged.png` | ➕ | — | Хозяйка — бой: 2-я фаза ≤50% (этап 4.3) |  |

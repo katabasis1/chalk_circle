@@ -1,4 +1,104 @@
 {
  "version": 3,
- "assets": {}
+ "assets": {
+  "hozyaika_idle": {
+   "file": "hozyaika_idle.png",
+   "w": 434,
+   "h": 640,
+   "mode": "key-green",
+   "warnings": [],
+   "src": "art_src/enemies/hozyaika_idle.png",
+   "group_hash": "aa34c3042cccab36"
+  },
+  "moshkara_idle": {
+   "file": "moshkara_idle.png",
+   "w": 421,
+   "h": 600,
+   "mode": "key-magenta",
+   "warnings": [],
+   "src": "art_src/enemies/moshkara_idle.png",
+   "group_hash": "145a2a031e250667"
+  },
+  "moshkara_jar": {
+   "file": "moshkara_jar.png",
+   "w": 256,
+   "h": 256,
+   "mode": "key-magenta",
+   "warnings": [],
+   "src": "art_src/enemies/moshkara_jar.png",
+   "group_hash": "8ba764d64b3f2b6c"
+  },
+  "motanka_idle": {
+   "file": "motanka_idle.png",
+   "w": 406,
+   "h": 600,
+   "mode": "key-green",
+   "warnings": [],
+   "src": "art_src/enemies/motanka_idle.png",
+   "group_hash": "d389c99906c6369f"
+  },
+  "motanka_jar": {
+   "file": "motanka_jar.png",
+   "w": 256,
+   "h": 256,
+   "mode": "key-green",
+   "warnings": [],
+   "src": "art_src/enemies/motanka_jar.png",
+   "group_hash": "96edabee824b48bd"
+  },
+  "podpolnik_idle": {
+   "file": "podpolnik_idle.png",
+   "w": 596,
+   "h": 600,
+   "mode": "key-magenta",
+   "warnings": [],
+   "src": "art_src/enemies/podpolnik_idle.png",
+   "group_hash": "d954b6a78225cb48"
+  },
+  "podpolnik_jar": {
+   "file": "podpolnik_jar.png",
+   "w": 256,
+   "h": 256,
+   "mode": "key-magenta",
+   "warnings": [],
+   "src": "art_src/enemies/podpolnik_jar.png",
+   "group_hash": "b2b2e64ac2638396"
+  },
+  "sheptuha_idle": {
+   "file": "sheptuha_idle.png",
+   "w": 333,
+   "h": 600,
+   "mode": "key-green",
+   "warnings": [],
+   "src": "art_src/enemies/sheptuha_idle.png",
+   "group_hash": "2cd2ff04f28e3c1b"
+  },
+  "sheptuha_jar": {
+   "file": "sheptuha_jar.png",
+   "w": 256,
+   "h": 256,
+   "mode": "key-green",
+   "warnings": [],
+   "src": "art_src/enemies/sheptuha_jar.png",
+   "group_hash": "6710b16d8bce6234"
+  },
+  "svecheed_idle": {
+   "file": "svecheed_idle.png",
+   "w": 314,
+   "h": 600,
+   "mode": "key-green",
+   "warnings": [],
+   "src": "art_src/enemies/svecheed_idle.png",
+   "group_hash": "d1758e85182be4cb"
+  },
+  "svecheed_jar": {
+   "file": "svecheed_jar.png",
+   "w": 256,
+   "h": 256,
+   "mode": "key-green",
+   "warnings": [],
+   "src": "art_src/enemies/svecheed_jar.png",
+   "group_hash": "875143f0ec5cfb30"
+  }
+ }
 }

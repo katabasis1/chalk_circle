@@ -10,11 +10,11 @@
 [ext_resource type="Texture2D" path="res://assets/art/reader.svg" id="8"]
 [ext_resource type="Script" path="res://scripts/shaker.gd" id="9"]
 [ext_resource type="LabelSettings" path="res://assets/ui/ls_small.tres" id="10"]
-[ext_resource type="Texture2D" path="res://assets/art/enemy_moshkara.svg" id="11"]
-[ext_resource type="Texture2D" path="res://assets/art/enemy_svecheed.svg" id="12"]
-[ext_resource type="Texture2D" path="res://assets/art/enemy_sheptuha.svg" id="13"]
-[ext_resource type="Texture2D" path="res://assets/art/enemy_motanka.svg" id="14"]
-[ext_resource type="Texture2D" path="res://assets/art/enemy_podpolnik.svg" id="15"]
+[ext_resource type="Texture2D" path="res://assets/art/gen/moshkara_jar.png" id="11"]
+[ext_resource type="Texture2D" path="res://assets/art/gen/svecheed_jar.png" id="12"]
+[ext_resource type="Texture2D" path="res://assets/art/gen/sheptuha_jar.png" id="13"]
+[ext_resource type="Texture2D" path="res://assets/art/gen/motanka_jar.png" id="14"]
+[ext_resource type="Texture2D" path="res://assets/art/gen/podpolnik_jar.png" id="15"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mat1"]
 shader = ExtResource("3")

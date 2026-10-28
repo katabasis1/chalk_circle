@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="NpcData" format=3]
 
 [ext_resource type="Script" path="res://scripts/data/npc_data.gd" id="1"]
-[ext_resource type="Texture2D" path="res://assets/art/enemy_motanka.svg" id="2"]
+[ext_resource type="Texture2D" path="res://assets/art/gen/motanka_idle.png" id="2"]
 [ext_resource type="Script" path="res://scripts/data/action_data.gd" id="3"]
 [ext_resource type="Resource" path="res://data/spirits/thread.tres" id="4"]
 
@@ -28,10 +28,10 @@ id = &"motanka"
 name = "NPC_MOTANKA"
 texture = ExtResource("2")
 color = Color(0.8784, 0.1569, 0.2353, 1.0)
-sprite_scale = 0.85
+sprite_scale = 0.6673
 float_amount = 4.0
 boss = false
-eyes = PackedVector2Array(0.5, 0.2734)
-eye_size = 0.0234
+eyes = PackedVector2Array(0.431, 0.108)
+eye_size = 0.0184
 actions = Array[ExtResource("3")]([SubResource("Resource_atk1"), SubResource("Resource_atk2")])
 spirit = ExtResource("4")
