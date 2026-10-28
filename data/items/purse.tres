@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/item_data.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/art/coin.svg" id="2"]
+
+[resource]
+script = ExtResource("1")
+id = &"purse"
+name = "IT_PURSE"
+info = "IT_PURSE_INFO"
+upgrade_info = "IT_PURSE_UP"
+type = 1
+icon = ExtResource("2")
+global_stat = "free_rerolls"
+global_gain = 1.0

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/item_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/data/action_data.gd" id="2"]
+[ext_resource type="Texture2D" path="res://assets/art/enemy_motanka.svg" id="3"]
+
+[sub_resource type="Resource" id="Resource_act1"]
+script = ExtResource("2")
+text = "SP_THREAD"
+kind = 0
+lifetime = 2
+size = 1
+damage = 20.0
+reverse = true
+
+[resource]
+script = ExtResource("1")
+id = &"spirit_thread"
+name = "SP_THREAD"
+info = "SP_THREAD_INFO"
+upgrade_info = "SP_THREAD_UP"
+type = 2
+icon = ExtResource("3")
+price = 120
+action_stat = "damage"
+action_gain = 15.0
+action = SubResource("Resource_act1")

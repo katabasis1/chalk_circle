@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ActionData" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/action_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+text = "ACT_SEAL"
+kind = 2
+size = 0
+lifetime = 3

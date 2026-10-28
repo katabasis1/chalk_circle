@@ -1,0 +1,228 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/shop/shop.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/fx/candle.tscn" id="2"]
+[ext_resource type="Texture2D" path="res://assets/art/glow.png" id="3"]
+[ext_resource type="Texture2D" path="res://assets/art/domovoy.svg" id="4"]
+[ext_resource type="Script" path="res://scripts/shaker.gd" id="5"]
+[ext_resource type="LabelSettings" path="res://assets/ui/ls_small.tres" id="6"]
+[ext_resource type="Resource" path="res://data/actions/ui/done.tres" id="7"]
+[ext_resource type="Script" path="res://scripts/data/action_data.gd" id="8"]
+[ext_resource type="PackedScene" path="res://scenes/ring/ring.tscn" id="9"]
+[ext_resource type="LabelSettings" path="res://assets/ui/ls_card_title.tres" id="10"]
+[ext_resource type="LabelSettings" path="res://assets/ui/ls_body.tres" id="11"]
+[ext_resource type="LabelSettings" path="res://assets/ui/ls_pop_small.tres" id="12"]
+
+[sub_resource type="Animation" id="Animation_RESET_1"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0),
+"transitions": PackedFloat32Array(1.0),
+"update": 0,
+"values": [Vector2(0.95, 0.95)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0),
+"transitions": PackedFloat32Array(1.0),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_idle_2"]
+resource_name = "idle"
+length = 2.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0, 1.3, 2.6),
+"transitions": PackedFloat32Array(1.0, 1.0, 1.0),
+"update": 0,
+"values": [Vector2(0.95, 0.95), Vector2(0.97, 0.93), Vector2(0.95, 0.95)]
+}
+
+[sub_resource type="Animation" id="Animation_smile_3"]
+resource_name = "smile"
+length = 0.45
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0, 0.1, 0.25, 0.45),
+"transitions": PackedFloat32Array(1.0, 1.0, 1.0, 1.0),
+"update": 0,
+"values": [Vector2(0.95, 0.95), Vector2(1.1, 0.82), Vector2(0.9, 1.05), Vector2(0.95, 0.95)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0, 0.1, 0.25, 0.45),
+"transitions": PackedFloat32Array(1.0, 1.0, 1.0, 1.0),
+"update": 0,
+"values": [0.0, -0.08, 0.05, 0.0]
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_add4"]
+blend_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lib5"]
+_data = {
+&"RESET": SubResource("Animation_RESET_1"),
+&"idle": SubResource("Animation_idle_2"),
+&"smile": SubResource("Animation_smile_3")
+}
+
+[node name="Shop" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Candles" type="Node2D" parent="."]
+position = Vector2(0.0, 210.0)
+modulate = Color(1.0, 1.0, 1.0, 1.0)
+
+[node name="Candle1" parent="Candles" instance=ExtResource("2")]
+position = Vector2(278.9, 161.0)
+
+[node name="Candle2" parent="Candles" instance=ExtResource("2")]
+position = Vector2(-278.9, 161.0)
+
+[node name="Candle3" parent="Candles" instance=ExtResource("2")]
+position = Vector2(-278.9, -161.0)
+
+[node name="Candle4" parent="Candles" instance=ExtResource("2")]
+position = Vector2(278.9, -161.0)
+
+[node name="Domovoy" type="Node2D" parent="."]
+position = Vector2(0.0, -320.0)
+metadata/layout = "top"
+
+[node name="Glow" type="Sprite2D" parent="Domovoy"]
+material = SubResource("CanvasItemMaterial_add4")
+modulate = Color(1.0, 0.6, 0.25, 0.35)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("3")
+
+[node name="Sprite" type="Sprite2D" parent="Domovoy"]
+scale = Vector2(0.95, 0.95)
+texture = ExtResource("4")
+
+[node name="Shaker" type="Node" parent="Domovoy"]
+script = ExtResource("5")
+float_amount = 5.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Domovoy"]
+libraries = {
+&"": SubResource("AnimationLibrary_lib5")
+}
+
+[node name="Greeting" type="Label" parent="."]
+label_settings = ExtResource("6")
+horizontal_alignment = 1
+vertical_alignment = 1
+offset_left = -340.0
+offset_top = -112.0
+offset_right = 340.0
+offset_bottom = -72.0
+text = "SHOP_GREETING"
+metadata/layout = "top"
+
+[node name="Ring" parent="." instance=ExtResource("9")]
+position = Vector2(0.0, 210.0)
+wounds = true
+ui = Array[ExtResource("8")]([ExtResource("7")])
+
+[node name="Card" type="Control" parent="."]
+unique_name_in_owner = true
+offset_left = -160.0
+offset_top = 80.0
+offset_right = 160.0
+offset_bottom = 340.0
+pivot_offset = Vector2(160.0, 130.0)
+mouse_filter = 2
+
+[node name="CardShaker" type="Node" parent="Card"]
+unique_name_in_owner = true
+script = ExtResource("5")
+
+[node name="ItemContents" type="VBoxContainer" parent="Card"]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+theme_override_constants/separation = 2
+
+[node name="ItemIcon" type="TextureRect" parent="Card/ItemContents"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0.0, 76.0)
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ItemType" type="Label" parent="Card/ItemContents"]
+unique_name_in_owner = true
+label_settings = ExtResource("6")
+horizontal_alignment = 1
+vertical_alignment = 1
+auto_translate_mode = 2
+
+[node name="ItemTitle" type="Label" parent="Card/ItemContents"]
+unique_name_in_owner = true
+label_settings = ExtResource("10")
+horizontal_alignment = 1
+vertical_alignment = 1
+auto_translate_mode = 2
+autowrap_mode = 3
+
+[node name="ItemInfo" type="Label" parent="Card/ItemContents"]
+unique_name_in_owner = true
+label_settings = ExtResource("11")
+horizontal_alignment = 1
+vertical_alignment = 1
+auto_translate_mode = 2
+autowrap_mode = 3
+
+[node name="SoldOut" type="Label" parent="Card"]
+unique_name_in_owner = true
+label_settings = ExtResource("12")
+horizontal_alignment = 1
+vertical_alignment = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+modulate = Color(1.0, 0.35, 0.35, 1.0)
+mouse_filter = 2
+text = "SHOP_SOLD_OUT"
+
+[node name="Pops" type="Node2D" parent="."]
+position = Vector2(0.0, 210.0)
+
+[connection signal="pressed" from="Ring" to="." method="_on_ring_pressed"]

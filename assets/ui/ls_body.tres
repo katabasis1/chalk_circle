@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/Body.ttf" id="1"]
+
+[resource]
+font = ExtResource("1")
+font_size = 26
+font_color = Color(0.9, 0.87, 0.8, 1.0)
+outline_size = 6
+outline_color = Color(0.02, 0.01, 0.02, 1.0)

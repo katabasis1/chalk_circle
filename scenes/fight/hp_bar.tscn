@@ -1,0 +1,115 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/art/noise.png" id="1"]
+[ext_resource type="Script" path="res://scenes/fight/hp_bar.gd" id="2"]
+[ext_resource type="Shader" path="res://assets/shaders/arc.gdshader" id="3"]
+[ext_resource type="Texture2D" path="res://assets/art/chip.svg" id="4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mat1"]
+resource_local_to_scene = true
+shader = ExtResource("3")
+shader_parameter/center = -1.5708
+shader_parameter/arc_size = 6.2832
+shader_parameter/grow = 1.0
+shader_parameter/r_in = 0.86
+shader_parameter/r_out = 0.96
+shader_parameter/color = Color(0.9529, 0.902, 0.8, 1.0)
+shader_parameter/glow_color = Color(1.0, 0.9529, 0.8392, 1.0)
+shader_parameter/alpha = 0.85
+shader_parameter/glow_amount = 0.3
+shader_parameter/noise_tex = ExtResource("1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mat2"]
+resource_local_to_scene = true
+shader = ExtResource("3")
+shader_parameter/center = -1.5708
+shader_parameter/arc_size = 6.2832
+shader_parameter/grow = 1.0
+shader_parameter/r_in = 0.86
+shader_parameter/r_out = 0.96
+shader_parameter/color = Color(0.8784, 0.1569, 0.2353, 1.0)
+shader_parameter/glow_color = Color(1.0, 0.4157, 0.3529, 1.0)
+shader_parameter/hot = 0.3
+shader_parameter/noise_tex = ExtResource("1")
+
+[sub_resource type="Gradient" id="Gradient_grad3"]
+offsets = PackedFloat32Array(0.0, 0.35, 1.0)
+colors = PackedColorArray(1, 0.8, 0.75, 1, 0.88, 0.16, 0.24, 0.95, 0.5, 0.05, 0.1, 0)
+
+[sub_resource type="Gradient" id="Gradient_grad4"]
+offsets = PackedFloat32Array(0.0, 0.35, 1.0)
+colors = PackedColorArray(1, 0.8, 0.75, 1, 0.88, 0.16, 0.24, 0.95, 0.5, 0.05, 0.1, 0)
+
+[node name="HpBar" type="Control"]
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+mouse_filter = 2
+script = ExtResource("2")
+
+[node name="Ghost" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+material = SubResource("ShaderMaterial_mat1")
+
+[node name="Arc" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+material = SubResource("ShaderMaterial_mat2")
+
+[node name="CrumbsLeft" type="CPUParticles2D" parent="."]
+texture = ExtResource("4")
+emitting = false
+amount = 6
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+local_coords = false
+emission_shape = 1
+emission_sphere_radius = 6.0
+spread = 30.0
+gravity = Vector2(0.0, 700.0)
+initial_velocity_min = 60.0
+initial_velocity_max = 170.0
+damping_min = 40.0
+damping_max = 90.0
+angle_min = -180.0
+angle_max = 180.0
+angular_velocity_min = -540.0
+angular_velocity_max = 540.0
+scale_amount_min = 0.15
+scale_amount_max = 0.35
+color_ramp = SubResource("Gradient_grad3")
+
+[node name="CrumbsRight" type="CPUParticles2D" parent="."]
+texture = ExtResource("4")
+emitting = false
+amount = 6
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+local_coords = false
+emission_shape = 1
+emission_sphere_radius = 6.0
+spread = 30.0
+gravity = Vector2(0.0, 700.0)
+initial_velocity_min = 60.0
+initial_velocity_max = 170.0
+damping_min = 40.0
+damping_max = 90.0
+angle_min = -180.0
+angle_max = 180.0
+angular_velocity_min = -540.0
+angular_velocity_max = 540.0
+scale_amount_min = 0.15
+scale_amount_max = 0.35
+color_ramp = SubResource("Gradient_grad4")

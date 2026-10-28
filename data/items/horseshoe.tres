@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"horseshoe"
+name = "IT_HORSESHOE"
+info = "IT_HORSESHOE_INFO"
+upgrade_info = "IT_HORSESHOE_UP"
+type = 1
+global_stat = "first_hit_bonus"
+global_gain = 0.5

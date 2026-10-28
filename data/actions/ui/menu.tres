@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ActionData" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/action_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+text = "UI_MENU"
+size = 1
+fixed_location = 0.5
+kind = 3
+lifetime = 0

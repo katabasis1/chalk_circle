@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>$GODOT_PROJECT_NAME</title>
+<!-- Меловой круг: свой HTML-шаблон для Яндекс Игр (загрузчик + JS-мост window.CC к Yandex Games SDK v2). -->
+<style>
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#050304;touch-action:none;
+  -webkit-user-select:none;user-select:none;-webkit-touch-callout:none;overscroll-behavior:none;-webkit-tap-highlight-color:transparent}
+#canvas{display:block;position:fixed;left:0;top:0;width:100%;height:100%;outline:none}
+#cc-loader{position:fixed;left:0;top:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:radial-gradient(ellipse at 50% 58%,#141b16 0%,#070506 62%,#050304 100%);z-index:10;transition:opacity .7s ease;
+  font-family:Georgia,'Times New Roman',serif;color:#ece6d6}
+#cc-loader.hide{opacity:0;pointer-events:none}
+#cc-ring{width:min(58vw,46vh);height:min(58vw,46vh);overflow:visible}
+#cc-title{margin-top:3.5vh;font-size:min(8vw,5.4vh);letter-spacing:.16em;font-weight:900;text-align:center;line-height:1.05;
+  text-shadow:0 0 18px rgba(255,200,110,.35),0 3px 0 #000}
+#cc-pct{margin-top:1.6vh;font-size:min(3.6vw,2.2vh);opacity:.55;letter-spacing:.35em}
+#cc-notice{margin-top:2vh;max-width:84vw;text-align:center;color:#ff9a88;font:15px/1.4 sans-serif;display:none}
+.cc-flame{animation:ccf 1.4s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:50% 100%}
+.cc-flame.b{animation-duration:1.1s;animation-delay:-.4s}.cc-flame.c{animation-duration:1.7s;animation-delay:-.9s}
+@keyframes ccf{0%{transform:scale(1,1);opacity:.95}50%{transform:scale(.86,1.12);opacity:.8}100%{transform:scale(1.08,.9);opacity:1}}
+</style>
+$GODOT_HEAD_INCLUDE
+</head>
+<body>
+<canvas id="canvas" tabindex="0">HTML5 canvas appears to be unsupported in the current browser.</canvas>
+<noscript>JavaScript is required.</noscript>
+<div id="cc-loader">
+ <svg id="cc-ring" viewBox="0 0 200 200" aria-hidden="true">
+  <defs>
+   <filter id="cc-chalk" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="2" seed="7" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="3.4"/>
+   </filter>
+   <radialGradient id="cc-glow"><stop offset="0" stop-color="#ffcf7a" stop-opacity=".20"/><stop offset="1" stop-color="#ffcf7a" stop-opacity="0"/></radialGradient>
+   <radialGradient id="cc-fl"><stop offset="0" stop-color="#fff6d8"/><stop offset=".45" stop-color="#ffc35a"/><stop offset="1" stop-color="#ff6a1a" stop-opacity="0"/></radialGradient>
+  </defs>
+  <circle cx="100" cy="100" r="99" fill="url(#cc-glow)"/>
+  <circle cx="100" cy="100" r="78" fill="none" stroke="#ece6d6" stroke-opacity=".07" stroke-width="6"/>
+  <circle id="cc-arc" cx="100" cy="100" r="78" fill="none" stroke="#ece6d6" stroke-width="5" stroke-linecap="round"
+    filter="url(#cc-chalk)" transform="rotate(-90 100 100)" stroke-dasharray="490.1" stroke-dashoffset="490.1"/>
+  <circle cx="100" cy="100" r="68" fill="none" stroke="#ece6d6" stroke-opacity=".22" stroke-width="1.3" filter="url(#cc-chalk)"/>
+  <g fill="#ece6d6" fill-opacity=".28" filter="url(#cc-chalk)">
+   <path d="M100 38 l4 7 -4 7 -4 -7z"/><path d="M100 148 l4 7 -4 7 -4 -7z"/><path d="M38 100 l7 -4 7 4 -7 4z"/><path d="M148 100 l7 -4 7 4 -7 4z"/>
+  </g>
+  <g>
+   <rect x="11" y="20" width="6" height="16" rx="1.5" fill="#d9c9a0"/><ellipse class="cc-flame" cx="14" cy="14" rx="3.4" ry="6.5" fill="url(#cc-fl)"/>
+   <rect x="183" y="20" width="6" height="16" rx="1.5" fill="#d9c9a0"/><ellipse class="cc-flame b" cx="186" cy="14" rx="3.4" ry="6.5" fill="url(#cc-fl)"/>
+   <rect x="11" y="176" width="6" height="16" rx="1.5" fill="#d9c9a0"/><ellipse class="cc-flame c" cx="14" cy="170" rx="3.4" ry="6.5" fill="url(#cc-fl)"/>
+   <rect x="183" y="176" width="6" height="16" rx="1.5" fill="#d9c9a0"/><ellipse class="cc-flame" cx="186" cy="170" rx="3.4" ry="6.5" fill="url(#cc-fl)"/>
+  </g>
+  <g id="cc-spark" transform="translate(100 22)"><circle r="12" fill="#ffcf7a" opacity=".28"/><circle r="5" fill="#fff4cf"/></g>
+ </svg>
+ <div id="cc-title">МЕЛОВОЙ<br>КРУГ</div>
+ <div id="cc-pct">0%</div>
+ <div id="cc-notice"></div>
+</div>
+
+<script>
+/* ===================== JS-мост к Yandex Games SDK =====================
+   Godot вызывает CC.request(id, method, argsJson); ответ приходит в колбэк onResult(JSON {id, ok, data}).
+   События платформы (пауза, вкладка скрыта) идут в onEvent(JSON {e, d}). Без SDK всё отвечает безопасными заглушками. */
+(function () {
+  'use strict';
+  var C = window.CC = {};
+  var ysdk = null, player = null, payments = null, sdkErr = null;
+  var onResult = null, onEvent = null, queued = [];
+  var initDone = false, initResolve;
+  var sdkReady = new Promise(function (r) { initResolve = r; });
+  function finishInit() { if (!initDone) { initDone = true; initResolve(); } }
+  setTimeout(finishInit, 12000);
+  var l0 = (navigator.language || 'ru').slice(0, 2).toLowerCase();
+  C.lang = l0;
+  function errStr(e) { return String((e && (e.message || e.code)) || e || 'error'); }
+  function emit(name, data) {
+    var s = JSON.stringify({ e: name, d: data || {} });
+    if (onEvent) { try { onEvent(s); } catch (x) {} } else { queued.push(s); }
+  }
+  function withTimeout(p, ms) {
+    return Promise.race([p, new Promise(function (_, rej) { setTimeout(function () { rej(new Error('timeout')); }, ms); })]);
+  }
+  C.initSdk = function () {
+    if (C._initStarted) return; C._initStarted = true;
+    if (typeof YaGames === 'undefined') { sdkErr = 'no_sdk'; finishInit(); return; }
+    withTimeout(YaGames.init(), 10000).then(function (s) {
+      ysdk = s; window.ysdk = s;
+      try { C.lang = s.environment.i18n.lang || C.lang; } catch (x) {}
+      try {
+        s.on('game_api_pause', function () { emit('pause', { on: true }); });
+        s.on('game_api_resume', function () { emit('pause', { on: false }); });
+      } catch (x) {}
+      if (C.onLang) { try { C.onLang(C.lang); } catch (x) {} }
+      finishInit();
+    }).catch(function (e) { sdkErr = errStr(e); finishInit(); });
+  };
+  document.addEventListener('visibilitychange', function () { emit('visibility', { hidden: !!document.hidden }); });
+  window.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+
+  function needSdk() { if (!ysdk) throw new Error('no_sdk'); }
+  function getPlayer() {
+    if (player) return Promise.resolve(player);
+    needSdk();
+    return ysdk.getPlayer({ scopes: false }).then(function (p) { player = p; return p; });
+  }
+  function getPayments() {
+    if (payments) return Promise.resolve(payments);
+    needSdk();
+    return ysdk.getPayments({ signed: false }).then(function (p) { payments = p; return p; });
+  }
+  function lbApi() {
+    needSdk();
+    if (ysdk.leaderboards && ysdk.leaderboards.setScore) return Promise.resolve({ v2: true, api: ysdk.leaderboards });
+    return ysdk.getLeaderboards().then(function (lb) { return { v2: false, api: lb }; });
+  }
+  function entry(e) {
+    return { rank: e.rank, score: e.score, name: (e.player && e.player.publicName) || '',
+             avatar: (e.player && e.player.getAvatarSrc) ? e.player.getAvatarSrc('small') : '' };
+  }
+
+  var M = {};
+  M.init = function () {
+    return sdkReady.then(function () {
+      var d = { sdk: !!ysdk, err: sdkErr, lang: C.lang, device: 'desktop', tld: '', appId: '' };
+      if (ysdk) {
+        try { d.device = ysdk.deviceInfo.type || 'desktop'; } catch (x) {}
+        try { d.tld = ysdk.environment.i18n.tld || ''; } catch (x) {}
+        try { d.appId = String(ysdk.environment.app.id || ''); } catch (x) {}
+        try { d.payload = ysdk.environment.payload || ''; } catch (x) {}
+      } else {
+        d.device = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ? 'mobile' : 'desktop';
+      }
+      return d;
+    });
+  };
+  M.loadingReady = function () {
+    if (C.hideLoader) C.hideLoader();
+    if (ysdk && ysdk.features && ysdk.features.LoadingAPI) ysdk.features.LoadingAPI.ready();
+    return {};
+  };
+  M.gameplay = function (a) {
+    if (ysdk && ysdk.features && ysdk.features.GameplayAPI) {
+      if (a.on) ysdk.features.GameplayAPI.start(); else ysdk.features.GameplayAPI.stop();
+    }
+    return {};
+  };
+  M.fullscreen = function () {
+    if (!ysdk) return { shown: false, err: 'no_sdk' };
+    return new Promise(function (res) {
+      var done = false; function fin(o) { if (!done) { done = true; res(o); } }
+      ysdk.adv.showFullscreenAdv({ callbacks: {
+        onOpen: function () { emit('ad_open', { kind: 'fullscreen' }); },
+        onClose: function (wasShown) { fin({ shown: !!wasShown }); },
+        onError: function (e) { fin({ shown: false, err: errStr(e) }); },
+        onOffline: function () { fin({ shown: false, err: 'offline' }); }
+      } });
+    });
+  };
+  M.rewarded = function () {
+    if (!ysdk) return { rewarded: false, err: 'no_sdk' };
+    return new Promise(function (res) {
+      var rew = false, done = false; function fin(o) { if (!done) { done = true; res(o); } }
+      ysdk.adv.showRewardedVideo({ callbacks: {
+        onOpen: function () { emit('ad_open', { kind: 'rewarded' }); },
+        onRewarded: function () { rew = true; },
+        onClose: function () { fin({ rewarded: rew }); },
+        onError: function (e) { fin({ rewarded: rew, err: errStr(e) }); }
+      } });
+    });
+  };
+  M.banner = function (a) {
+    if (!ysdk || !ysdk.adv.showBannerAdv) return {};
+    return Promise.resolve(a.on ? ysdk.adv.showBannerAdv() : ysdk.adv.hideBannerAdv()).then(function () { return {}; });
+  };
+  M.getData = function () { return getPlayer().then(function (p) { return p.getData(); }).then(function (d) { return { data: d || {} }; }); };
+  M.setData = function (a) { return getPlayer().then(function (p) { return p.setData(a.data || {}, !!a.flush); }).then(function () { return {}; }); };
+  M.player = function () {
+    return getPlayer().then(function (p) {
+      var auth = p.getMode ? p.getMode() !== 'lite' : (p.isAuthorized ? p.isAuthorized() : false);
+      return { authorized: !!auth, name: p.getName ? p.getName() : '', id: p.getUniqueID ? p.getUniqueID() : '' };
+    });
+  };
+  M.auth = function () {
+    needSdk();
+    return ysdk.auth.openAuthDialog().then(function () { player = null; return { ok: true }; }, function () { return { ok: false }; });
+  };
+  M.lbSet = function (a) {
+    return lbApi().then(function (L) { return L.v2 ? L.api.setScore(a.name, a.score) : L.api.setLeaderboardScore(a.name, a.score); })
+      .then(function () { return {}; });
+  };
+  M.lbGet = function (a) {
+    var opts = { quantityTop: a.top || 10, includeUser: true, quantityAround: a.around || 3 };
+    return lbApi().then(function (L) {
+      return L.v2 ? L.api.getEntries(a.name, opts) : L.api.getLeaderboardEntries(a.name, opts);
+    }).then(function (r) {
+      return { entries: (r.entries || []).map(entry), userRank: r.userRank || 0 };
+    });
+  };
+  M.lbMe = function (a) {
+    return lbApi().then(function (L) { return L.v2 ? L.api.getPlayerEntry(a.name) : L.api.getLeaderboardPlayerEntry(a.name); })
+      .then(function (e) { return { entry: entry(e) }; }, function () { return { entry: null }; });
+  };
+  M.catalog = function () {
+    return getPayments().then(function (p) { return p.getCatalog(); }).then(function (list) {
+      return { items: list.map(function (x) {
+        return { id: x.id, title: x.title, description: x.description, price: x.price, priceValue: x.priceValue,
+                 currency: x.priceCurrencyCode, currencyImage: x.getPriceCurrencyImage ? x.getPriceCurrencyImage('small') : '' };
+      }) };
+    });
+  };
+  M.purchases = function () {
+    return getPayments().then(function (p) { return p.getPurchases(); }).then(function (list) {
+      return { items: list.map(function (x) { return { id: x.productID, token: x.purchaseToken }; }) };
+    });
+  };
+  M.purchase = function (a) {
+    return getPayments().then(function (p) { return p.purchase({ id: a.id }); }).then(function (x) {
+      return { ok: true, id: x.productID, token: x.purchaseToken };
+    }, function (e) { return { ok: false, err: errStr(e) }; });
+  };
+  M.consume = function (a) { return getPayments().then(function (p) { return p.consumePurchase(a.token); }).then(function () { return {}; }); };
+  M.flags = function (a) {
+    if (!ysdk || !ysdk.getFlags) return { flags: a.defaults || {} };
+    return ysdk.getFlags({ defaultFlags: a.defaults || {} }).then(function (f) { return { flags: f || {} }; });
+  };
+  M.shortcutCan = function () { needSdk(); return ysdk.shortcut.canShowPrompt().then(function (r) { return { can: !!(r && r.canShow) }; }); };
+  M.shortcut = function () { needSdk(); return ysdk.shortcut.showPrompt().then(function (r) { return { ok: !!(r && r.outcome === 'accepted') }; }); };
+  M.reviewCan = function () { needSdk(); return ysdk.feedback.canReview().then(function (r) { return { can: !!(r && r.value), reason: (r && r.reason) || '' }; }); };
+  M.review = function () { needSdk(); return ysdk.feedback.requestReview().then(function (r) { return { ok: !!(r && r.feedbackSent) }; }); };
+  M.serverTime = function () { return { ms: (ysdk && ysdk.serverTime) ? ysdk.serverTime() : Date.now() }; };
+  M.vibrate = function (a) { try { if (navigator.vibrate) navigator.vibrate(a.ms | 0); } catch (x) {} return {}; };
+
+  var LONG = { fullscreen: 1, rewarded: 1, purchase: 1, auth: 1, shortcut: 1, review: 1, init: 1 };
+  C.setHandlers = function (res, ev) {
+    onResult = res; onEvent = ev;
+    var q = queued; queued = [];
+    for (var i = 0; i < q.length; i++) { try { onEvent(q[i]); } catch (x) {} }
+  };
+  C.request = function (id, method, argsJson) {
+    var args = {};
+    try { args = JSON.parse(argsJson || '{}') || {}; } catch (x) {}
+    function reply(ok, data) {
+      if (!onResult || !id) return;
+      var s;
+      try { s = JSON.stringify({ id: id, ok: ok, data: data || {} }); } catch (x) { s = JSON.stringify({ id: id, ok: false, data: { err: 'json' } }); }
+      try { onResult(s); } catch (x) {}
+    }
+    var fn = M[method], p;
+    if (!fn) { reply(false, { err: 'unknown_method' }); return; }
+    try { p = Promise.resolve(fn(args)); } catch (e) { p = Promise.reject(e); }
+    p = withTimeout(p, LONG[method] ? 600000 : 10000);
+    p.then(function (d) { reply(true, d); }, function (e) { reply(false, { err: errStr(e) }); });
+  };
+}());
+</script>
+<script async src="/sdk.js" onload="CC.initSdk()" onerror="CC.initSdk()"></script>
+<script src="$GODOT_URL"></script>
+<script>
+const GODOT_CONFIG = $GODOT_CONFIG;
+const GODOT_THREADS_ENABLED = $GODOT_THREADS_ENABLED;
+const engine = new Engine(GODOT_CONFIG);
+
+(function () {
+  'use strict';
+  var loader = document.getElementById('cc-loader');
+  var arc = document.getElementById('cc-arc');
+  var spark = document.getElementById('cc-spark');
+  var pct = document.getElementById('cc-pct');
+  var title = document.getElementById('cc-title');
+  var notice = document.getElementById('cc-notice');
+  var CIRC = 490.1, target = 0, shown = 0, hidden = false, started = performance.now();
+  var RU = { ru: 1, be: 1, kk: 1, uk: 1, uz: 1 };
+  function setTitle(l) { title.innerHTML = RU[l] ? 'МЕЛОВОЙ<br>КРУГ' : 'CHALK<br>CIRCLE'; }
+  setTitle(CC.lang);
+  CC.onLang = setTitle;
+
+  function frame() {
+    if (hidden) return;
+    // если сервер не отдал размер — плавно ползём к 90%
+    var t = target > 0 ? target : Math.min(0.9, (performance.now() - started) / 14000);
+    shown += (t - shown) * 0.12;
+    var a = (shown * 360 - 90) * Math.PI / 180;
+    arc.setAttribute('stroke-dashoffset', String(CIRC * (1 - shown)));
+    spark.setAttribute('transform', 'translate(' + (100 + 78 * Math.cos(a)).toFixed(2) + ' ' + (100 + 78 * Math.sin(a)).toFixed(2) + ')');
+    pct.textContent = Math.round(shown * 100) + '%';
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  CC.hideLoader = function () {
+    if (hidden) return;
+    target = 1;
+    setTimeout(function () { hidden = true; loader.classList.add('hide'); setTimeout(function () { loader.style.display = 'none'; }, 800); }, 250);
+    try { document.getElementById('canvas').focus(); } catch (x) {}
+  };
+  function fail(err) {
+    notice.style.display = 'block';
+    notice.textContent = (RU[CC.lang] ? 'Не удалось запустить игру: ' : 'Failed to start the game: ') + (err && err.message ? err.message : err);
+    console.error(err);
+  }
+
+  var missing = Engine.getMissingFeatures({ threads: GODOT_THREADS_ENABLED });
+  if (missing.length !== 0) {
+    fail(missing.join(', '));
+    return;
+  }
+  engine.startGame({
+    onProgress: function (current, total) {
+      if (current > 0 && total > 0) target = Math.min(0.97, current / total);
+    }
+  }).then(function () {
+    target = 0.98;
+    // Игра сама скроет загрузчик через CC.request(..., 'loadingReady'). Подстраховка — через 8 с.
+    setTimeout(function () { CC.hideLoader(); }, 8000);
+  }, fail);
+}());
+</script>
+</body>
+</html>

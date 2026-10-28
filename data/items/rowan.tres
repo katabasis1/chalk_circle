@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"rowan"
+name = "IT_ROWAN"
+info = "IT_ROWAN_INFO"
+upgrade_info = "IT_ROWAN_UP"
+type = 1
+global_stat = "nullified_hits"
+global_gain = 1.0

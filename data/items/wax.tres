@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/item_data.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/art/candle.svg" id="2"]
+
+[resource]
+script = ExtResource("1")
+id = &"wax"
+name = "IT_WAX"
+info = "IT_WAX_INFO"
+upgrade_info = "IT_WAX_UP"
+type = 1
+icon = ExtResource("2")
+global_stat = "max_health"
+global_gain = 1.0

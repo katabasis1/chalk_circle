@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/item_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/data/action_data.gd" id="2"]
+[ext_resource type="Texture2D" path="res://assets/art/enemy_sheptuha.svg" id="3"]
+
+[sub_resource type="Resource" id="Resource_act1"]
+script = ExtResource("2")
+text = "SP_WHISPER"
+kind = 0
+lifetime = 2
+size = 1
+percent_enemy_hp_damage = 0.25
+
+[resource]
+script = ExtResource("1")
+id = &"spirit_whisper"
+name = "SP_WHISPER"
+info = "SP_WHISPER_INFO"
+upgrade_info = "SP_WHISPER_UP"
+type = 2
+icon = ExtResource("3")
+price = 120
+action_stat = "percent_enemy_hp_damage"
+action_gain = 0.05
+action = SubResource("Resource_act1")

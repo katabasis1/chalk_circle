@@ -1,0 +1,457 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/art/noise.png" id="1"]
+[ext_resource type="Shader" path="res://assets/shaders/arc.gdshader" id="2"]
+[ext_resource type="Script" path="res://scenes/ring/section.gd" id="3"]
+[ext_resource type="Texture2D" path="res://assets/art/seal.svg" id="4"]
+[ext_resource type="LabelSettings" path="res://assets/ui/ls_section.tres" id="5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mat1"]
+resource_local_to_scene = true
+shader = ExtResource("2")
+shader_parameter/center = 0.0
+shader_parameter/arc_size = 0.6
+shader_parameter/grow = 0.0
+shader_parameter/r_in = 0.7
+shader_parameter/r_out = 0.84
+shader_parameter/noise_tex = ExtResource("1")
+
+[sub_resource type="Animation" id="Animation_RESET_2"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:grow")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0),
+"transitions": PackedFloat32Array(1.0),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flash")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0),
+"transitions": PackedFloat32Array(1.0),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:fade")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0),
+"transitions": PackedFloat32Array(1.0),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0),
+"transitions": PackedFloat32Array(1.0),
+"update": 0,
+"values": [Vector2(1.0, 1.0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tooltip:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0),
+"transitions": PackedFloat32Array(1.0),
+"update": 0,
+"values": [Color(1.0, 1.0, 1.0, 1.0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tooltip:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.0),
+"transitions": PackedFloat32Array(1.0),
+"update": 0,
+"values": [Vector2(1.0, 1.0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:warn")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.0),
+"transitions": PackedFloat32Array(1.0),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_in_3"]
+resource_name = "in"
+length = 0.22
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:grow")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0, 0.22),
+"transitions": PackedFloat32Array(0.4, 1.0),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0, 0.22),
+"transitions": PackedFloat32Array(0.4, 1.0),
+"update": 0,
+"values": [Vector2(0.9, 0.9), Vector2(1.0, 1.0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tooltip:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0, 0.15),
+"transitions": PackedFloat32Array(1.0, 1.0),
+"update": 0,
+"values": [Color(1.0, 1.0, 1.0, 0.0), Color(1.0, 1.0, 1.0, 1.0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tooltip:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0, 0.12, 0.22),
+"transitions": PackedFloat32Array(1.0, 1.0, 1.0),
+"update": 0,
+"values": [Vector2(0.6, 0.6), Vector2(1.12, 1.12), Vector2(1.0, 1.0)]
+}
+
+[sub_resource type="Animation" id="Animation_press_4"]
+resource_name = "press"
+length = 0.32
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:flash")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0, 0.3),
+"transitions": PackedFloat32Array(1.0, 1.0),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0, 0.32),
+"transitions": PackedFloat32Array(0.4, 1.0),
+"update": 0,
+"values": [Vector2(1.0, 1.0), Vector2(1.14, 1.14)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:fade")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0, 0.08, 0.32),
+"transitions": PackedFloat32Array(1.0, 1.0, 1.0),
+"update": 0,
+"values": [1.0, 1.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tooltip:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0, 0.2),
+"transitions": PackedFloat32Array(1.0, 1.0),
+"update": 0,
+"values": [Vector2(1.35, 1.35), Vector2(1.0, 1.0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tooltip:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1, 0.32),
+"transitions": PackedFloat32Array(1.0, 1.0),
+"update": 0,
+"values": [Color(1.0, 1.0, 1.0, 1.0), Color(1.0, 1.0, 1.0, 0.0)]
+}
+
+[sub_resource type="Animation" id="Animation_expire_5"]
+resource_name = "expire"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:fade")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0, 0.35),
+"transitions": PackedFloat32Array(1.0, 1.0),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0, 0.35),
+"transitions": PackedFloat32Array(1.0, 1.0),
+"update": 0,
+"values": [Vector2(1.0, 1.0), Vector2(0.92, 0.92)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tooltip:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0, 0.3),
+"transitions": PackedFloat32Array(1.0, 1.0),
+"update": 0,
+"values": [Color(1.0, 1.0, 1.0, 1.0), Color(1.0, 1.0, 1.0, 0.0)]
+}
+
+[sub_resource type="Animation" id="Animation_charge_6"]
+resource_name = "charge"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:warn")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0),
+"transitions": PackedFloat32Array(1.0),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:grow")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0),
+"transitions": PackedFloat32Array(1.0),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:flash")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0),
+"transitions": PackedFloat32Array(1.0),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0, 0.2),
+"transitions": PackedFloat32Array(0.4, 1.0),
+"update": 0,
+"values": [Vector2(0.94, 0.94), Vector2(1.0, 1.0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tooltip:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0, 0.2),
+"transitions": PackedFloat32Array(1.0, 1.0),
+"update": 0,
+"values": [Color(1.0, 1.0, 1.0, 0.0), Color(1.0, 1.0, 1.0, 0.5)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tooltip:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.0, 0.2),
+"transitions": PackedFloat32Array(0.4, 1.0),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(1.0, 1.0)]
+}
+
+[sub_resource type="Animation" id="Animation_arm_7"]
+resource_name = "arm"
+length = 0.26
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:warn")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0, 0.05),
+"transitions": PackedFloat32Array(1.0, 1.0),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:grow")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0),
+"transitions": PackedFloat32Array(1.0),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:flash")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0, 0.26),
+"transitions": PackedFloat32Array(1.0, 1.0),
+"update": 0,
+"values": [0.9, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0, 0.26),
+"transitions": PackedFloat32Array(0.4, 1.0),
+"update": 0,
+"values": [Vector2(1.12, 1.12), Vector2(1.0, 1.0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tooltip:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0, 0.08),
+"transitions": PackedFloat32Array(1.0, 1.0),
+"update": 0,
+"values": [Color(1.0, 1.0, 1.0, 0.5), Color(1.0, 1.0, 1.0, 1.0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tooltip:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.0, 0.1, 0.26),
+"transitions": PackedFloat32Array(1.0, 1.0, 1.0),
+"update": 0,
+"values": [Vector2(1.0, 1.0), Vector2(1.25, 1.25), Vector2(1.0, 1.0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lib8"]
+_data = {
+&"RESET": SubResource("Animation_RESET_2"),
+&"in": SubResource("Animation_in_3"),
+&"press": SubResource("Animation_press_4"),
+&"expire": SubResource("Animation_expire_5"),
+&"charge": SubResource("Animation_charge_6"),
+&"arm": SubResource("Animation_arm_7")
+}
+
+[node name="Section" type="Node2D"]
+script = ExtResource("3")
+
+[node name="Arc" type="ColorRect" parent="."]
+offset_left = -320.0
+offset_top = -320.0
+offset_right = 320.0
+offset_bottom = 320.0
+mouse_filter = 2
+material = SubResource("ShaderMaterial_mat1")
+
+[node name="Icon" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4")
+scale = Vector2(0.55, 0.55)
+
+[node name="Tooltip" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="Tooltip"]
+unique_name_in_owner = true
+label_settings = ExtResource("5")
+horizontal_alignment = 1
+vertical_alignment = 1
+auto_translate_mode = 2
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 10.0
+offset_bottom = 10.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_lib8")
+}

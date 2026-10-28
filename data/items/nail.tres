@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"nail"
+name = "IT_NAIL"
+info = "IT_NAIL_INFO"
+upgrade_info = "IT_NAIL_UP"
+type = 1
+global_stat = "bonus_damage"
+global_gain = 1.0

@@ -1,0 +1,221 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/menu/menu.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/fx/candle.tscn" id="2"]
+[ext_resource type="Shader" path="res://assets/shaders/title.gdshader" id="3"]
+[ext_resource type="LabelSettings" path="res://assets/ui/ls_title.tres" id="4"]
+[ext_resource type="LabelSettings" path="res://assets/ui/ls_body.tres" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/ring/ring.tscn" id="6"]
+[ext_resource type="Texture2D" path="res://assets/art/glow.png" id="7"]
+[ext_resource type="Texture2D" path="res://assets/art/reader.svg" id="8"]
+[ext_resource type="Script" path="res://scripts/shaker.gd" id="9"]
+[ext_resource type="LabelSettings" path="res://assets/ui/ls_small.tres" id="10"]
+[ext_resource type="Texture2D" path="res://assets/art/enemy_moshkara.svg" id="11"]
+[ext_resource type="Texture2D" path="res://assets/art/enemy_svecheed.svg" id="12"]
+[ext_resource type="Texture2D" path="res://assets/art/enemy_sheptuha.svg" id="13"]
+[ext_resource type="Texture2D" path="res://assets/art/enemy_motanka.svg" id="14"]
+[ext_resource type="Texture2D" path="res://assets/art/enemy_podpolnik.svg" id="15"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mat1"]
+shader = ExtResource("3")
+shader_parameter/jitter = 1.6
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_add2"]
+blend_mode = 1
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Candles" type="Node2D" parent="."]
+position = Vector2(0.0, 210.0)
+modulate = Color(1.0, 1.0, 1.0, 1.0)
+
+[node name="Candle1" parent="Candles" instance=ExtResource("2")]
+position = Vector2(278.9, 161.0)
+
+[node name="Candle2" parent="Candles" instance=ExtResource("2")]
+position = Vector2(-278.9, 161.0)
+
+[node name="Candle3" parent="Candles" instance=ExtResource("2")]
+position = Vector2(-278.9, -161.0)
+
+[node name="Candle4" parent="Candles" instance=ExtResource("2")]
+position = Vector2(278.9, -161.0)
+
+[node name="Title" type="Label" parent="."]
+label_settings = ExtResource("4")
+horizontal_alignment = 1
+vertical_alignment = 1
+offset_left = -360.0
+offset_top = -610.0
+offset_right = 360.0
+offset_bottom = -370.0
+metadata/layout = "top"
+text = "MENU_TITLE"
+material = SubResource("ShaderMaterial_mat1")
+
+[node name="Subtitle" type="Label" parent="."]
+label_settings = ExtResource("5")
+horizontal_alignment = 1
+vertical_alignment = 1
+offset_left = -340.0
+offset_top = -370.0
+offset_right = 340.0
+offset_bottom = -325.0
+metadata/layout = "top"
+text = "MENU_SUB"
+modulate = Color(1.0, 1.0, 1.0, 0.75)
+
+[node name="Ring" parent="." instance=ExtResource("6")]
+position = Vector2(0.0, 210.0)
+
+[node name="Reader" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0.0, 200.0)
+
+[node name="Glow" type="Sprite2D" parent="Reader"]
+material = SubResource("CanvasItemMaterial_add2")
+modulate = Color(1.0, 0.55, 0.2, 0.4)
+scale = Vector2(3.6, 3.6)
+texture = ExtResource("7")
+
+[node name="Sprite" type="Sprite2D" parent="Reader"]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("8")
+
+[node name="Shaker" type="Node" parent="Reader"]
+script = ExtResource("9")
+float_amount = 6.0
+
+[node name="Bestiary" type="Control" parent="."]
+unique_name_in_owner = true
+offset_left = -170.0
+offset_top = 60.0
+offset_right = 170.0
+offset_bottom = 360.0
+mouse_filter = 2
+
+[node name="CaughtLabel" type="Label" parent="Bestiary"]
+unique_name_in_owner = true
+label_settings = ExtResource("10")
+horizontal_alignment = 1
+vertical_alignment = 1
+auto_translate_mode = 2
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 340.0
+offset_bottom = 34.0
+
+[node name="Slots" type="GridContainer" parent="Bestiary"]
+unique_name_in_owner = true
+offset_left = 0.0
+offset_top = 38.0
+offset_right = 340.0
+offset_bottom = 300.0
+mouse_filter = 2
+columns = 3
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 4
+
+[node name="moshkara" type="VBoxContainer" parent="Bestiary/Slots"]
+mouse_filter = 2
+size_flags_horizontal = 3
+
+[node name="Icon" type="TextureRect" parent="Bestiary/Slots/moshkara"]
+custom_minimum_size = Vector2(96.0, 86.0)
+mouse_filter = 2
+texture = ExtResource("11")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="Bestiary/Slots/moshkara"]
+label_settings = ExtResource("10")
+horizontal_alignment = 1
+vertical_alignment = 1
+auto_translate_mode = 2
+theme_override_font_sizes/font_size = 18
+
+[node name="svecheed" type="VBoxContainer" parent="Bestiary/Slots"]
+mouse_filter = 2
+size_flags_horizontal = 3
+
+[node name="Icon" type="TextureRect" parent="Bestiary/Slots/svecheed"]
+custom_minimum_size = Vector2(96.0, 86.0)
+mouse_filter = 2
+texture = ExtResource("12")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="Bestiary/Slots/svecheed"]
+label_settings = ExtResource("10")
+horizontal_alignment = 1
+vertical_alignment = 1
+auto_translate_mode = 2
+theme_override_font_sizes/font_size = 18
+
+[node name="sheptuha" type="VBoxContainer" parent="Bestiary/Slots"]
+mouse_filter = 2
+size_flags_horizontal = 3
+
+[node name="Icon" type="TextureRect" parent="Bestiary/Slots/sheptuha"]
+custom_minimum_size = Vector2(96.0, 86.0)
+mouse_filter = 2
+texture = ExtResource("13")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="Bestiary/Slots/sheptuha"]
+label_settings = ExtResource("10")
+horizontal_alignment = 1
+vertical_alignment = 1
+auto_translate_mode = 2
+theme_override_font_sizes/font_size = 18
+
+[node name="motanka" type="VBoxContainer" parent="Bestiary/Slots"]
+mouse_filter = 2
+size_flags_horizontal = 3
+
+[node name="Icon" type="TextureRect" parent="Bestiary/Slots/motanka"]
+custom_minimum_size = Vector2(96.0, 86.0)
+mouse_filter = 2
+texture = ExtResource("14")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="Bestiary/Slots/motanka"]
+label_settings = ExtResource("10")
+horizontal_alignment = 1
+vertical_alignment = 1
+auto_translate_mode = 2
+theme_override_font_sizes/font_size = 18
+
+[node name="podpolnik" type="VBoxContainer" parent="Bestiary/Slots"]
+mouse_filter = 2
+size_flags_horizontal = 3
+
+[node name="Icon" type="TextureRect" parent="Bestiary/Slots/podpolnik"]
+custom_minimum_size = Vector2(96.0, 86.0)
+mouse_filter = 2
+texture = ExtResource("15")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="Bestiary/Slots/podpolnik"]
+label_settings = ExtResource("10")
+horizontal_alignment = 1
+vertical_alignment = 1
+auto_translate_mode = 2
+theme_override_font_sizes/font_size = 18
+
+[node name="BestLabel" type="Label" parent="."]
+unique_name_in_owner = true
+label_settings = ExtResource("5")
+horizontal_alignment = 1
+vertical_alignment = 1
+auto_translate_mode = 2
+offset_left = -340.0
+offset_top = 572.0
+offset_right = 340.0
+offset_bottom = 620.0
+
+[connection signal="pressed" from="Ring" to="." method="_on_ring_pressed"]

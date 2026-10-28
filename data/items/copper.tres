@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/item_data.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/data/action_data.gd" id="2"]
+[ext_resource type="Texture2D" path="res://assets/art/coin.svg" id="3"]
+
+[sub_resource type="Resource" id="Resource_act1"]
+script = ExtResource("2")
+text = "IT_COPPER"
+damage = 1.0
+damage_gain = 1.0
+kind = 0
+lifetime = 2
+
+[resource]
+script = ExtResource("1")
+id = &"copper"
+name = "IT_COPPER"
+info = "IT_COPPER_INFO"
+upgrade_info = "IT_COPPER_UP"
+type = 0
+icon = ExtResource("3")
+action_stat = "damage_gain"
+action_gain = 1.0
+action = SubResource("Resource_act1")

@@ -1,0 +1,46 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/bg/background.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/art/bg.svg" id="2"]
+[ext_resource type="Texture2D" path="res://assets/art/noise.png" id="3"]
+[ext_resource type="Shader" path="res://assets/shaders/fog.gdshader" id="4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mat1"]
+shader = ExtResource("4")
+shader_parameter/noise_tex = ExtResource("3")
+shader_parameter/fog_color = Color(0.55, 0.66, 0.62, 1.0)
+shader_parameter/density = 0.42
+shader_parameter/speed = 0.015
+
+[node name="Background" type="CanvasLayer"]
+layer = -10
+script = ExtResource("1")
+
+[node name="Sky" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Fog" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+material = SubResource("ShaderMaterial_mat1")
+
+[node name="Tint" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.02, 0.05, 0.08, 0.15)

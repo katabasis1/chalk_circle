@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"gingerbread"
+name = "IT_GINGER"
+info = "IT_GINGER_INFO"
+upgrade_info = "IT_GINGER_UP"
+type = 1
+global_stat = "free_snacks"
+global_gain = 1.0

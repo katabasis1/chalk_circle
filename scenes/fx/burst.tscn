@@ -1,0 +1,37 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/fx/burst.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/art/glow.png" id="2"]
+
+[sub_resource type="Curve" id="Curve_curve1"]
+_data = [Vector2(0.0, 1.0), 0.0, 0.0, 0, 0, Vector2(1.0, 0.0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_grad2"]
+offsets = PackedFloat32Array(0.0, 0.6, 1.0)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.8, 1, 1, 1, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_add3"]
+blend_mode = 1
+
+[node name="Burst" type="CPUParticles2D"]
+texture = ExtResource("2")
+material = SubResource("CanvasItemMaterial_add3")
+script = ExtResource("1")
+emitting = false
+amount = 22
+lifetime = 0.55
+one_shot = true
+explosiveness = 0.95
+emission_shape = 1
+emission_sphere_radius = 10.0
+spread = 180.0
+gravity = Vector2(0.0, 520.0)
+initial_velocity_min = 180.0
+initial_velocity_max = 460.0
+damping_min = 200.0
+damping_max = 420.0
+scale_amount_min = 0.08
+scale_amount_max = 0.22
+scale_amount_curve = SubResource("Curve_curve1")
+color_ramp = SubResource("Gradient_grad2")

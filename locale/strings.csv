@@ -1,0 +1,139 @@
+keys,ru,en
+TITLE_GAME,МЕЛОВОЙ КРУГ,CHALK CIRCLE
+MENU_TITLE,МЕЛОВОЙ\nКРУГ,CHALK\nCIRCLE
+MENU_SUB,семь ночей в кругу,seven nights inside the circle
+MENU_BEST,Рекорд: ночь %d,Best: night %d
+MENU_HINT,"Жми, когда искра на знаке",Tap when the spark is on a sign
+UI_PLAY,НАЧАТЬ,BEGIN
+UI_BESTIARY,БЕСТИАРИЙ,BESTIARY
+BESTIARY_CAUGHT,Поймано духов: %d / %d,Spirits caught: %d / %d
+NPC_MOSHKARA,Мошкара,Midgeswarm
+NPC_SVECHEED,Свечеед,Candle-Eater
+NPC_SHEPTUHA,Шептуха,Whisperer
+NPC_MOTANKA,Мотанка,Rag Doll
+NPC_PODPOLNIK,Подпольник,Underfloor
+NPC_HOZYAIKA,Хозяйка болот,Mistress of the Marsh
+ACT_STRIKE,Удар,Strike
+ACT_SEAL,ПЕЧАТЬ,SEAL
+ATK_BITE,Укус,Bite
+ATK_SWARM,Рой,Swarm
+ATK_SINGE,Ожог,Singe
+ATK_SNUFF,Задуть,Snuff
+ATK_CURSE,Порча,Hex
+ATK_WHISPER,Шёпот,Whisper
+ATK_PRICK,Укол,Prick
+ATK_TWIST,Перекрут,Twist
+ATK_SCRATCH,Царап,Scratch
+ATK_GRAB,Утащить,Drag
+ATK_UNKNOWN,???,???
+SHOP_BUY,КУПИТЬ,BUY
+SHOP_SNACK,ОТВАР,BREW
+SHOP_REROLL,ДРУГОЕ,OTHER
+SHOP_DONE,ДАЛЬШЕ,ONWARD
+SHOP_FREE,даром,free
+SHOP_SOLD_OUT,не хватает,can't afford
+SHOP_GREETING,"«Бери, пока не рассвело»",“Take it before dawn”
+TYPE_SPELL,заговор,spell
+TYPE_CHARM,оберег,charm
+TYPE_SPIRIT,дух,spirit
+TYPE_UPGRADE,улучшение,upgrade
+IT_BEGONE,«Сгинь!»,“Begone!”
+IT_BEGONE_INFO,15 урона,Deal 15 damage
+IT_BEGONE_UP,+10 урона,+10 damage
+IT_BLOOD,Кровью,By Blood
+IT_BLOOD_INFO,Теряешь 0.5 здоровья.\n40 урона,Lose 0.5 health.\nDeal 40 damage
+IT_BLOOD_UP,+40 урона,+40 damage
+IT_SALT,Соль,Salt
+IT_SALT_INFO,Сметает все атаки нечисти.\n10 урона за каждую,Sweeps away all enemy attacks.\n10 damage for each
+IT_SALT_UP,+10 урона за каждую,+10 damage for each
+IT_COPPER,Медный грош,Copper Coin
+IT_COPPER_INFO,1 урон.\nКаждый удар — навсегда +1,1 damage.\nEach hit adds +1 for good
+IT_COPPER_UP,прирост +1,growth +1
+IT_HORSESHOE,Подкова,Horseshoe
+IT_HORSESHOE_INFO,Первый удар по нечисти\n+50% урона,First hit on each enemy\n+50% damage
+IT_HORSESHOE_UP,ещё +50%,another +50%
+IT_WORMWOOD,Полынь,Wormwood
+IT_WORMWOOD_INFO,Пойманная атака нечисти\nбьёт её на 2,Catching an enemy attack\ndeals 2 damage
+IT_WORMWOOD_UP,ещё +2 урона,+2 more damage
+IT_NAIL,Железный гвоздь,Iron Nail
+IT_NAIL_INFO,Все удары +1 урона,All hits +1 damage
+IT_NAIL_UP,ещё +1 урона,+1 more damage
+IT_ROWAN,Рябиновые бусы,Rowan Beads
+IT_ROWAN_INFO,Первая рана за ночь\nне считается,The first wound each night\ndoesn't count
+IT_ROWAN_UP,ещё одна рана,one more wound
+IT_PURSE,Кошель,Purse
+IT_PURSE_INFO,«Другое» даром\nв каждой лавке,A free “other”\nin every shop
+IT_PURSE_UP,ещё одно даром,one more free
+IT_GINGER,Пряник,Gingerbread
+IT_GINGER_INFO,Отвар даром\nв каждой лавке,A free brew\nin every shop
+IT_GINGER_UP,ещё один даром,one more free
+IT_JAR,Склянка,Jar
+IT_JAR_INFO,+1 склянка для Печати,+1 jar for the Seal
+IT_JAR_UP,ещё +1 склянка,+1 more jar
+IT_WAX,Восковая куколка,Wax Doll
+IT_WAX_INFO,+1 к здоровью,+1 max health
+IT_WAX_UP,ещё +1 к здоровью,+1 more max health
+SP_SWARM,Рой,Swarm
+SP_SWARM_INFO,3 урона 3 раза,3 damage 3 times
+SP_SWARM_UP,+2 удара,+2 hits
+SP_LIGHT,Чужой свет,Stolen Light
+SP_LIGHT_INFO,Следующий удар ×2,Next hit deals ×2
+SP_LIGHT_UP,+50% к бонусу,+50% bonus
+SP_WHISPER,Шёпот,Whisper
+SP_WHISPER_INFO,Урон — 25% текущего\nздоровья нечисти,Deals 25% of the enemy's\ncurrent health
+SP_WHISPER_UP,+5%,+5%
+SP_THREAD,Нить,Thread
+SP_THREAD_INFO,20 урона.\nИскра разворачивается,20 damage.\nThe spark turns back
+SP_THREAD_UP,+15 урона,+15 damage
+SP_GRIP,Хватка,Grip
+SP_GRIP_INFO,5 урона. Если добивает —\n+50 монет,5 damage. If it kills —\n+50 coins
+SP_GRIP_UP,+5 урона,+5 damage
+POP_PARRIED,сметено,swept
+POP_PREPARED,сила!,power!
+POP_REVERSED,разворот!,reversed!
+POP_TELEPORTED,утащило!,dragged!
+POP_SPEDUP,быстрее!,faster!
+POP_BLINDED,тьма!,darkness!
+POP_DODGED,поймал,caught
+POP_WHIFFED,пусто,nothing
+POP_ESCAPED,ускользнул,escaped
+POP_NULLIFIED,бусы уберегли,beads saved you
+POP_OUCH,РАНА,WOUND
+POP_MISS,мимо,miss
+POP_SEAL_NOW,ПЕЧАТЬ!,SEAL!
+POP_SEALED,ЗАПЕЧАТАН!,SEALED!
+POP_NEW_SPIRIT,новый дух,new spirit
+POP_BOUGHT,ВЗЯТО,TAKEN
+POP_YUM,+0.5,+0.5
+POP_REROLL,другое,other
+WIPE_NIGHT,НОЧЬ %d,NIGHT %d
+WIPE_SHOP,ЛАВКА ДОМОВОГО,THE DOMOVOY'S SHOP
+WIPE_BOSS,ХОЗЯЙКА БОЛОТ,MISTRESS OF THE MARSH
+WIPE_DEATH,ТЫ ПАЛ,YOU FELL
+WIPE_DAWN,РАССВЕТ,DAWN
+END_DEATH,ТЫ ПАЛ,YOU FELL
+END_DEATH_SUB,Круг разомкнулся…,The circle is broken…
+END_VICTORY,РАССВЕТ,DAWN
+END_VICTORY_SUB,Пропели петухи. Хозяйка ушла в топь.,The roosters crowed. The Mistress sank into the bog.
+END_STATS,Ночей пережито: %d\nНечисти изгнано: %d\nДухов поймано: %d\nУрона: %d\nМонет: %d\nЛучшее комбо: %d\nИдеальных ударов: %d,Nights survived: %d\nEnemies banished: %d\nSpirits caught: %d\nDamage: %d\nCoins: %d\nBest combo: %d\nPerfect hits: %d
+UI_AGAIN,ЗАНОВО,AGAIN
+UI_MENU,МЕНЮ,MENU
+UI_ENDLESS,ВЕЧНАЯ НОЧЬ,ENDLESS NIGHT
+UI_REVIVE,ВОСКРЕСНУТЬ\n(реклама),REVIVE\n(ad)
+HUD_NIGHT,НОЧЬ %d / %d,NIGHT %d / %d
+HUD_NIGHT_ENDLESS,НОЧЬ %d,NIGHT %d
+HUD_SOUND_ON,ЗВУК: ВКЛ,SOUND: ON
+HUD_SOUND_OFF,ЗВУК: ВЫКЛ,SOUND: OFF
+HINT_TAP,"Тапни, когда искра над белым знаком.\nЛови цветные атаки, пока не догорели!",Tap when the spark is over a white sign.\nCatch colored attacks before they burn out!
+HINT_SEAL,"Добей до золотой черты — вспыхнет ПЕЧАТЬ.\nПоймай её, и дух станет твоим.",Bring it down to the gold mark and a SEAL flares up.\nCatch it to make the spirit yours.
+UI_CONTINUE,ПРОДОЛЖИТЬ,CONTINUE
+UI_CONTINUE_N,ПРОДОЛЖИТЬ · НОЧЬ %d,CONTINUE · NIGHT %d
+UI_NEW_RUN,ЗАНОВО,NEW RUN
+MENU_HINT_MOBILE,"Тапай, когда искра на знаке",Tap when the spark is on a sign
+MENU_HINT_DESKTOP,"Клик или ПРОБЕЛ, когда искра на знаке",Click or press SPACE when the spark is on a sign
+HINT_TAP_MOBILE,"Тапни, когда искра над белым знаком.\nЛови цветные атаки, пока не догорели!",Tap when the spark is over a white sign.\nCatch colored attacks before they burn out!
+HINT_TAP_DESKTOP,"Клик или ПРОБЕЛ, когда искра над белым знаком.\nЛови цветные атаки, пока не догорели!",Click or press SPACE when the spark is over a white sign.\nCatch colored attacks before they burn out!
+HUD_COMBO,КОМБО ×%d,COMBO ×%d
+HUD_COMBO_BONUS,+%d%% урона,+%d%% damage
+POP_COMBO_TIER,КОМБО ×%d!\n+%d%% урона,COMBO ×%d!\n+%d%% damage
+POP_PERFECT,ИДЕАЛЬНО!,PERFECT!
